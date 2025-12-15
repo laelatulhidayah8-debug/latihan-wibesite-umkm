@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pendaftaran Webinar – Seblak Kartini</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Seblak Kartini</h1>
+  <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="tentang.html">Tentang Kami</a></li>
+        <li><a href="produk.html">Produk</a></li>
+        <li><a href="galeri.html">Galeri</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+        <li><a href="webinar.html"class="active">Webinar class</a></li>
+      </ul>
+      </div>
+    </nav>
+  </header>
+
+  <h2>Form Pendaftaran Webinar Produk Seblak Kartini</h2>
+
+  <form id="formWebinar">
+    
+    <label for="nama">Nama Lengkap:</label>
+    <input type="text" id="nama" required>
+    <span class="error" id="errNama"></span>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    <span class="error" id="errEmail"></span>
+
+    
+    <label for="hp">No HP:</label>
+    <input type="text" id="hp" required>
+    <span class="error" id="errHp"></span>
+
+    <label for="topik">Pilih Topik Webinar:</label>
+    <select id="topik" required>
+      <option value="">-- Pilih Topik --</option>
+      <option value="marketing">Strategi Marketing UMKM</option>
+      <option value="branding">Branding Produk Makanan</option>
+      <option value="foto">Teknik Foto Produk</option>
+    </select>
+    <span class="error" id="errTopik"></span>
+
+
+    <div style="margin-top:10px;">
+      <input type="checkbox" id="syarat">
+      <label for="syarat">Saya setuju dengan syarat & ketentuan</label>
+    </div>
+    <span class="error" id="errSyarat"></span>
+
+    <p id="notifSukses" class="sukses">Form berhasil dikirim!</p>
+
+    <button type="submit">Daftar Webinar</button>
+  </form>
+
+  <script>
+    const form = document.getElementById("formWebinar");
+
+const nama = document.getElementById("nama");
+const email = document.getElementById("email");
+const hp = document.getElementById("hp");
+const topik = document.getElementById("topik");
+const syarat = document.getElementById("syarat");
+
+const errNama = document.getElementById("errNama");
+const errEmail = document.getElementById("errEmail");
+const errHp = document.getElementById("errHp");
+const errTopik = document.getElementById("errTopik");
+const errSyarat = document.getElementById("errSyarat");
+
+const notif = document.getElementById("notifSukses");
+
+// VALIDASI REAL-TIME
+nama.addEventListener("input", () => {
+  if (nama.value.length < 3) errNama.textContent = "Nama minimal 3 karakter";
+  else errNama.textContent = "";
+});
+
+email.addEventListener("input", () => {
+  if (!email.value.includes("@") || email.value.includes("yahoo.com"))
+    errEmail.textContent = "Email harus valid dan bukan Yahoo";
+  else errEmail.textContent = "";
+});
+
+hp.addEventListener("input", () => {
+  if (!/^[0-9]+$/.test(hp.value))
+    errHp.textContent = "No HP harus angka semua";
+  else errHp.textContent = "";
+});
+
+topik.addEventListener("change", () => {
+  errTopik.textContent = topik.value === "" ? "Pilih topik terlebih dahulu" : "";
+});
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let valid = true;
+
+  if (nama.value.length < 3) {
+    errNama.textContent = "Nama minimal 3 karakter";
+    valid = false;
+  }
+
+  if (!email.value.includes("@") || email.value.includes("yahoo.com")) {
+    errEmail.textContent = "Gunakan email valid (bukan Yahoo)";
+    valid = false;
+  }
+
+  if (!/^[0-9]+$/.test(hp.value)) {
+    errHp.textContent = "No HP wajib angka";
+    valid = false;
+  }
+
+  if (topik.value === "") {
+    errTopik.textContent = "Silakan pilih topik webinar";
+    valid = false;
+  }
+
+  if (!syarat.checked) {
+    errSyarat.textContent = "Anda harus menyetujui syarat!";
+    valid = false;
+  } else {
+    errSyarat.textContent = "";
+  }
+
+  // Jika semua valid → tampilkan notifikasi sukses
+  if (valid) {
+    notif.style.display = "block";
+    notif.textContent = "Form berhasil dikirim!";
+    form.reset();
+  }
+});
+  </script>
+
+</body>
+</html>
