@@ -480,3 +480,14 @@ footer {
     width: 60px;
   }
 }
+
+ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  text-align: center;
+}

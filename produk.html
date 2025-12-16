@@ -1,140 +1,92 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Daftar Produk Batik Laras</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Produk Seblak Kartini</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <nav>
-     <ul>
-        <li><a href="#">Beranda</a></li>
-        <li><a href="#">Produk</a></li>
-        <li><a href="#">Kontak</a></li>
-     </ul>
-    </nav>
+
+
+<header>
+<nav>
+<ul class="nav-menu">
+  <li><a href="index.html">Beranda</a></li>
+  <li><a href="tentang.html">Tentang Kami</a></li>
+  <li><a href="produk.html" class="active">Produk</a></li>
+  <li><a href="galeri.html">Galeri</a></li>
+  <li><a href="kontak.html">Kontak</a></li>
+</ul>
+</nav>
 </header>
-<main>
-    <p>UMKM yang menyajikan makanan bercita rasa khas dari bandung Jawa Barat.</p>
-    <h2>Selamat Datang di Website Kami</h2>
-    <p>Kami menyediakan makanan bercita rasa khas bumi pasundan pedas gurih dan nikmat.</p>
 
-    <main class="container">
- 
-    <section class="usia-section">
-      <h2>Cek Kategori Usia</h2>
-      <input type="number" id="usiaInput" placeholder="Masukkan usia Anda">
-      <button onclick="cekKategoriUsia()">Cek Kategori</button>
-      <p id="hasilUsia"></p>
-    </section>
 
-   
-    <section class="testimoni-section">
-      <h2>Testimoni Pelanggan</h2>
-      <div id="testimoniContainer" class="testimoni-container"></div>
-    </section>
+<main class="container">
+<h2>Selamat Datang di Website Kami</h2>
+<p>UMKM yang menyajikan makanan bercita rasa khas Bandung, Jawa Barat.</p>
 
-    
-    <section class="total-section">
-      <h2>Hitung Total Belanja</h2>
-      <form id="formBelanja" onsubmit="return hitungTotalBelanja()">
-        <label for="harga">Harga Produk (Rp):</label><br>
-        <input type="number" id="harga" required><br><br>
 
-        <label for="jumlah">Jumlah Beli:</label><br>
-        <input type="number" id="jumlah" required><br><br>
+<!-- Cek Usia -->
+<section>
+<h3>Cek Kategori Usia</h3>
+<input type="number" id="usiaInput" placeholder="Masukkan usia">
+<button onclick="cekKategoriUsia()">Cek</button>
+<p id="hasilUsia"></p>
+</section>
 
-        <button type="submit">Hitung Total</button>
-      </form>
-      <p id="hasilTotal"></p>
-    </section>
-  </main>
-      
-      <h3>Produk Unggulan:</h3>
-      <p>Berikut daftar menu seblak khas bandung yang kami sediakan:</p>
 
-      <table border="1" cellspacing="0" cellpadding="8">
-         <thead>
-            <tr>
-              <th>Produk</th>
-              <th>Harga</th>
-            </tr>
-         </thead>
-         <tbody>
-            <tr>
-                <td>Seblak Krupuk Original</td>
-                <td>Rp 10.000</td>
-            </tr>
-            <tr>
-                <td>Seblak Ceker</td>
-                <td>Rp 12.000</td>
-            </tr>
-            <tr>
-                <td>Seblak Seafood</td>
-                <td>Rp 15.0000</td>
-            </tr>
-            <tr>
-                <td colspan="3" style="text-align: center; background-color: #eee;">
-                    Semua harga sudah termasuk PPN
-                </td>  
-            </tr>
-         </tbody>
-         </table>
-        <ul>
-        <body>
-          
-          <section>
-      <h2>Form Pemesanan</h2>
-      <form onsubmit="return cekForm()">
-        <input type="text" id="namaProduk" placeholder="Nama Produk">
-        <input type="number" id="jumlah" placeholder="Jumlah">
-        <input type="number" id="harga" placeholder="Harga per Produk (Rp)">
-        <button type="submit">Pesan</button>
-      </form>
-      <p><strong>Total Belanja:</strong> <span id="total-belanja">-</span></p>
-    </section>
-  </main>
+<!-- Hitung Total -->
+<section>
+<h3>Hitung Total Belanja</h3>
+<input type="number" id="harga" placeholder="Harga Produk">
+<input type="number" id="jumlah" placeholder="Jumlah Beli">
+<button onclick="hitungTotal()">Hitung</button>
+<p id="hasilTotal"></p>
+</section>
 
-          <script>
-            document.addEventListener("DOMContentLoaded", function () {
-              const produkInput = document.getElementById("produkInput");
-              const tambahBtn = document.getElementById("tambahBtn");
-              const daftarProduk = document.getElementById("daftarProduk");
-              const previewProduk = document.getElementById("previewProduk");
-              const temaSelect = document.getElementById("temaSelect");
-          // Event 1: Tambah Produk ke daftar (click)
-          tambahBtn.addEventListener("click", function (e) {
-            e.preventDefault();
 
-            const namaProduk = produkInput.value.trim();
-            if (namaProduk !== "") {
-              const li = document.createElement("li");
-              li.textContent = namaProduk;
+<!-- Produk -->
+<section>
+<h3>Produk Unggulan</h3>
+<table border="1" cellpadding="8">
+<tr><th>Produk</th><th>Harga</th></tr>
+<tr><td>Seblak Kerupuk Original</td><td>Rp 10.000</td></tr>
+<tr><td>Seblak Ceker</td><td>Rp 12.000</td></tr>
+<tr><td>Seblak Seafood</td><td>Rp 15.000</td></tr>
+</table>
+</section>
+</main>
 
-              li.addEventListener("mouseover",() =>
-            li.style.backgroundColor = "#e0e0e0");
-              li.addEventListener("mouseout", () => li.style.backgroundColor="");
 
-              li.addEventListener("dblclick", () => {
-                if (confirm("Yakin ingin menghapus produk ini?")) {
-                  li.remove();
-                }
-              });
+<script>
+function cekKategoriUsia() {
+const usia = document.getElementById("usiaInput").value;
+const hasil = document.getElementById("hasilUsia");
 
-              daftarProduk.appendChild(li);
-              produkInput.value = "";
-              previewProduk.textContent = "";
-            }
-          });
-          produkInput.addEventListener("keyup", function () {
-          previewProduk.textContent = produkInput.value;
-          });
-          // Event 3: Ubah tema background (change)
-          temaSelect.addEventListener("change", function () {
-            document.body.style.backgroundColor = temaSelect.value;
-          });
-        });
-          </script>
-  <header>
+
+if (usia === "") {
+hasil.textContent = "Masukkan usia terlebih dahulu";
+} else if (usia < 12) {
+hasil.textContent = "Kategori: Anak-anak";
+} else if (usia < 18) {
+hasil.textContent = "Kategori: Remaja";
+} else {
+hasil.textContent = "Kategori: Dewasa";
+}
+}
+
+
+function hitungTotal() {
+const harga = document.getElementById("harga").value;
+const jumlah = document.getElementById("jumlah").value;
+const total = harga * jumlah;
+
+
+document.getElementById("hasilTotal").textContent = "Total Belanja: Rp " + total;
+}
+</script>
+
+
+</body>
+</html>
